@@ -8,7 +8,6 @@
     :root {
       --color-primary: #EC5800;
       --color-bg: #fdfdff;
-      
       --color-text: #1d1d1f;
       --color-muted: #8e8e93;
       --radius: 16px;
@@ -98,7 +97,7 @@
     .card .tag {
       background: #ffeb3b;
       color: #000;
-      font-size: 12px;
+      font-size: 18px;
       padding: 2px 6px;
       border-radius: 6px;
       margin-left: 6px;
@@ -116,6 +115,15 @@
       margin-bottom: 10px;
       padding: 15px;
       border-radius: 8px;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      transform: scale(1.05);
+      transition: transform 0.5s;
+    }
+    .p200, .p280, .p320{
+      font-weight: 800;
+      font-size: larger;
     }
     form {
       display: flex;
@@ -198,34 +206,34 @@
     <h2>Փաթեթներ</h2>
     <div class="cards">
       <div class="card">
-        <h3>Standard</h3>
+        <h2>Standard</h2>
         <ul>
           <li>✅ Հեղինակային AI ոճով վիզուալ</li>
           <li>✅ Յուրահատուկ կերպարներ</li>
           <li>✅ Կինեմատոգրաֆիկ կադրերի կառուցվածք</li>
           <li>❌ Առանց երկխոսության և ուղիղ խոսքի</li>
           <li>❌ Առանց sound design-ի</li>
-          <li>💸 200,000 դրամ</li>
+          <li><span class="p200">💸 200,000 դրամ</span></li>
         </ul>
       </div>
       <div class="card featured">
-        <h3>Pro <span class="tag">🔥 Առաջարկում ենք</span></h3>
+        <h1>Pro <span class="tag">🔥 Առաջարկում ենք</span></h1>
         <ul>
           <li>✅ Standart փաթեթը</li>
           <li>✅ Երկխոսություն կերպարների միջև</li>
           <li>✅ Շրթունքների սինքրոնացում (lipsync)</li>
           <li>❌ Առանց sound design-ի</li>
-          <li>💸 280,000 դրամ</li>
+          <li><span class="p280">💸 280,000 դրամ</span></li>
         </ul>
       </div>
       <div class="card">
-        <h3>Plus</h3>
+        <h2>Plus</h2>
         <ul>
           <li>✅ Standart փաթեթը</li>
           <li>✅ Pro փաթեթըր</li>
           <li>✅ Պրոֆեսիոնալ սաունդ-դիզայն</li>
           <li>✅ 2D/3D ծրագրային վերամշակում</li>
-          <li>💸 320,000 դրամ</li>
+          <li><span class="p320">💸 320,000 դրամ</span></li>
         </ul>
       </div>
     </div>
@@ -264,7 +272,6 @@
     }
     window.addEventListener('scroll', () => {
       document.querySelectorAll('.reveal').forEach(el => {
-      
         const top = el.getBoundingClientRect().top;
         const windowHeight = window.innerHeight;
         if (top < windowHeight - 100) {

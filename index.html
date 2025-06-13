@@ -1,253 +1,274 @@
 <!DOCTYPE html>
 <html lang="hy">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Մեր Գեղեցիկ Սայթը</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Popcorn Animations</title>
   <style>
     :root {
-      --main-color: #6a0dad;
-      --light-bg: #f9f6ff;
-      --dark-text: #222;
-      --accent-color: #fff;
-      --transition: 0.3s ease;
+      --color-primary: #7b4eff;
+      --color-bg: #fdfdff;
+      --color-text: #1d1d1f;
+      --color-muted: #8e8e93;
+      --radius: 16px;
     }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: var(--light-bg);
-      color: var(--dark-text);
-      scroll-behavior: smooth;
+      background: var(--color-bg);
+      color: var(--color-text);
       line-height: 1.6;
+      scroll-behavior: smooth;
+      transition: background 0.5s, color 0.5s;
     }
-
-    .navbar {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: var(--main-color);
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 30px;
-      z-index: 1000;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-
-    .navbar .logo {
-      font-size: 22px;
-      font-weight: bold;
-    }
-
-    .navbar ul {
-      list-style: none;
-      display: flex;
-      gap: 25px;
-    }
-
-    .navbar ul li a {
-      text-decoration: none;
-      color: white;
-      font-weight: 500;
-      transition: var(--transition);
-    }
-
-    .navbar ul li a:hover {
-      color: #ffc;
-    }
-
-    header {
-      background: linear-gradient(to right, #6a0dad, #8e44ad);
-      color: white;
+    .hero {
       text-align: center;
-      padding: 100px 20px 60px;
+      padding: 100px 20px;
+      background: linear-gradient(135deg, #7b4eff, #b17eff);
+      color: white;
     }
-
-    header h1 {
-      font-size: 3em;
-      margin-bottom: 10px;
+    .hero button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 16px;
+      background: white;
+      color: #7b4eff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
     }
-
-    header p {
-      font-size: 1.2em;
-    }
-
     section {
       padding: 60px 20px;
-      max-width: 1200px;
+      max-width: 1000px;
       margin: auto;
     }
-
     h2 {
+      font-size: 32px;
       text-align: center;
-      font-size: 2em;
-      margin-bottom: 30px;
-      color: var(--main-color);
+      margin-bottom: 40px;
+      color: var(--color-primary);
     }
-
-    .portfolio, .packages {
+    .carousel {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 30px;
     }
-
-    .portfolio img, .package {
-      width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    .slide-card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+      padding: 20px;
+      text-align: center;
       transition: transform 0.3s;
     }
-
-    .portfolio img:hover, .package:hover {
-      transform: scale(1.03);
+    .slide-card:hover { transform: translateY(-5px); }
+    .slide-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 15px;
     }
-
-    .package {
-      background: white;
+    .slide-card h4 {
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: var(--color-primary);
+    }
+    .slide-card p {
+      font-size: 14px;
+      color: #555;
+    }
+    .cards {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .card {
       padding: 20px;
+      background: #f0f0f0;
+      border-radius: 12px;
+      flex: 1 1 280px;
       text-align: center;
     }
-
-    .package h3 {
-      margin-bottom: 10px;
-      color: var(--main-color);
+    .card.featured {
+      background: #7b4eff;
+      color: white;
     }
-
-    .faq details {
-      background: white;
-      padding: 15px 20px;
+    .card .tag {
+      background: #ffeb3b;
+      color: #000;
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 6px;
+      margin-left: 6px;
+    }
+    .card ul {
+      text-align: left;
+      margin-top: 12px;
+      list-style: none;
+      padding: 0;
+      font-size: 15px;
+    }
+    .card ul li { margin: 6px 0; }
+    details {
+      background: #f8f8f8;
       margin-bottom: 10px;
+      padding: 15px;
+      border-radius: 8px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    form input, form textarea {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    form button {
+      padding: 10px;
+      background: #7b4eff;
+      color: white;
+      border: none;
       border-radius: 8px;
       cursor: pointer;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
-
-    .faq summary {
-      font-weight: bold;
-      color: var(--main-color);
-    }
-
-    .contact {
-      background: var(--accent-color);
-      text-align: center;
-      padding: 40px;
-      border-radius: 12px;
-    }
-
-    .contact p {
-      font-size: 1.1em;
-    }
-
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 30px;
+      font-size: 14px;
       color: #888;
     }
-
-    .scroll-top {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: var(--main-color);
-      color: white;
-      padding: 12px;
-      border-radius: 50%;
-      cursor: pointer;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-      display: none;
-      font-size: 20px;
+    .dark-mode {
+      background: #121212;
+      color: #eee;
+    }
+    .dark-mode .card {
+      background: #2a2a2a;
+    }
+    .dark-mode .card.featured {
+      background: #9f79ff;
     }
   </style>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="logo">Մեր Կայքը</div>
-    <ul>
-      <li><a href="#portfolio">Գործեր</a></li>
-      <li><a href="#packages">Փաթեթներ</a></li>
-      <li><a href="#faq">Հարցեր</a></li>
-      <li><a href="#contact">Կոնտակտ</a></li>
-    </ul>
-  </nav>
-
-  <header>
-    <h1>Բարի գալուստ մեր հարթակ</h1>
-    <p>Ձեր վստահելի գործընկերը դիզայնի, ստեղծագործության և արդյունքի մեջ</p>
+  <header class="hero">
+    <h1>Բարի գալուստ</h1>
+    <p>Տես՝ ինչ ենք ստեղծել</p>
+    <button onclick="scrollToSection('projects')">Դիտել գործերը ↓</button>
   </header>
 
-  <section id="portfolio">
-    <h2>📁 Մեր Գործերը</h2>
-    <div class="portfolio">
-      <img src="https://via.placeholder.com/400x250?text=Օրինակ+1" alt="Օրինակ 1">
-      <img src="https://via.placeholder.com/400x250?text=Օրինակ+2" alt="Օրինակ 2">
-      <img src="https://via.placeholder.com/400x250?text=Օրինակ+3" alt="Օրինակ 3">
+  <section id="projects" class="reveal">
+    <h2>Մեր Գործերը</h2>
+    <div class="carousel">
+      <div class="slide-card">
+        <a href="https://ibb.co/LdkjpvgF"><img src="https://i.ibb.co/HTFwgXPS/6.jpg" alt="6" border="0"></a>
+        <h4>Սոցիալական գրաֆիկա</h4>
+        <p>Իդեալական Instagram-ի ու պատմությունների համար</p>
+      </div>
+      <div class="slide-card">
+        <a href="https://imgbb.com/"><img src="https://i.ibb.co/13Wk5JK/53.png" alt="53" border="0"></a>
+        <h4>Motion Դիզայն</h4>
+        <p>Կարճ հոլովակներ ու անիմացիաներ</p>
+      </div>
+      <div class="slide-card">
+        <a href="https://ibb.co/Xx9ZN7hF"><img src="https://i.ibb.co/GQXvBWKC/3.png" alt="3" border="0"></a>
+        <h4>Բրենդինգ Պոստեր</h4>
+        <p>Պրոֆեսիոնալ, մաքուր դիզայն ընկերությունների համար</p>
+      </div>
     </div>
   </section>
 
-  <section id="packages">
-    <h2>💼 Մեր Փաթեթները</h2>
-    <div class="packages">
-      <div class="package">
+  <section id="pricing" class="reveal">
+    <h2>Փաթեթներ</h2>
+    <div class="cards">
+      <div class="card">
         <h3>Standard</h3>
-        <p>Հիմնական ծառայություններ՝ փոքր նախագծերի համար։</p>
+        <ul>
+          <li>✅ Հեղինակային AI ոճով վիզուալ</li>
+          <li>✅ Յուրահատուկ կերպարներ</li>
+          <li>✅ Կինեմատոգրաֆիկ կադրերի կառուցվածք</li>
+          <li>❌ Առանց երկխոսության և ուղիղ խոսքի</li>
+          <li>❌ Առանց sound design-ի</li>
+          <li>💸 200,000 դրամ</li>
+        </ul>
       </div>
-      <div class="package">
-        <h3>Pro</h3>
-        <p>Ընդլայնված փաթեթ՝ արագ սպասարկմամբ։</p>
+      <div class="card featured">
+        <h3>Pro <span class="tag">🔥 Առաջարկում ենք</span></h3>
+        <ul>
+          <li>✅ Standart փաթեթը</li>
+          <li>✅ Երկխոսություն կերպարների միջև</li>
+          <li>✅ Շրթունքների սինքրոնացում (lipsync)</li>
+          <li>❌ Առանց sound design-ի</li>
+          <li>💸 280,000 դրամ</li>
+        </ul>
       </div>
-      <div class="package">
+      <div class="card">
         <h3>Plus</h3>
-        <p>Անհատական մոտեցում և պրեմիում սպասարկում։</p>
+        <ul>
+          <li>✅ Standart փաթեթը</li>
+          <li>✅ Pro փաթեթըր</li>
+          <li>✅ Պրոֆեսիոնալ սաունդ-դիզայն</li>
+          <li>✅ 2D/3D ծրագրային վերամշակում</li>
+          <li>💸 320,000 դրամ</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <section id="faq">
-    <h2>❓ Տարածված Հարցեր</h2>
-    <div class="faq">
-      <details>
-        <summary>Որքա՞ն ժամանակում է պատրաստվում նախագիծը։</summary>
-        <p>Միջին հաշվով՝ 2-5 աշխատանքային օր, կախված ծավալից։</p>
-      </details>
-      <details>
-        <summary>Ինչպե՞ս պատվիրել ծառայություն։</summary>
-        <p>Գրեք մեզ Instagram-ում կամ էլ․ փոստով՝ կապնվենք։</p>
-      </details>
-      <details>
-        <summary>Առաջարկում եք անհատական լուծումնե՞ր։</summary>
-        <p>Այո՛, աշխատում ենք նաև հատուկ նախագծերի վրա։</p>
-      </details>
-    </div>
+  <section id="faq" class="reveal">
+    <h2>Հաճախակի Հարցեր</h2>
+    <details><summary>Ի՞նչ ենք առաջարկում</summary><p>🔹 կերպարների ստեղծում  🔹 Տեսարանների կառուցում՝ ձեր տրամադրած օրինակներին (reference) ու միջավայրին համապատասխան 🔹 տարբեր ոճերի ինտեգրացիա
+      </p></details>
+    <details><summary>Աշխատանքային ժամկետը</summary><p>2-5 օր կախված փաթեթից։</p></details>
   </section>
 
-  <section id="contact">
-    <h2>📞 Կոնտակտներ</h2>
-    <div class="contact">
-      <p>📱 Հեռախոս: <strong>+374 99 00 00 00</strong></p>
-      <p>📧 Էլ․ փոստ: <strong>example@mail.com</strong></p>
-      <p>📷 Instagram: <strong>@yourpage</strong></p>
-    </div>
+  <section id="contact" class="reveal">
+    <h2>Կապ մեզ հետ</h2>
+    <form onsubmit="handleSubmit(event)">
+      <input type="text" placeholder="Ձեր անունը" required />
+      <input type="email" placeholder="Էլ․ փոստ" required />
+      <textarea placeholder="Հաղորդագրություն" required></textarea>
+      <button type="submit">Ուղարկել</button>
+    </form>
+    <p id="form-msg"></p>
   </section>
 
   <footer>
-    © 2025 Ձեր Կազմակերպության Անունը
+    <p>© 2025 Քո Կազմակերպությունը</p>
+    <button id="modeToggle">🌙 Փոխել ռեժիմ</button>
   </footer>
 
-  <div class="scroll-top" id="scrollTop" title="Վերադառնալ վերև">↑</div>
-
   <script>
-    const scrollBtn = document.getElementById('scrollTop');
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+    function handleSubmit(event) {
+      event.preventDefault();
+      document.getElementById('form-msg').textContent = 'Շնորհակալություն, մենք կկապվենք ձեզ հետ։';
+    }
     window.addEventListener('scroll', () => {
-      scrollBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+      document.querySelectorAll('.reveal').forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (top < windowHeight - 100) {
+          el.style.opacity = 1;
+          el.style.transform = 'translateY(0)';
+        }
+      });
     });
-    scrollBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.reveal').forEach(el => {
+        el.style.opacity = 0;
+        el.style.transform = 'translateY(40px)';
+        el.style.transition = 'all 0.6s ease';
+      });
+      document.getElementById('modeToggle').addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+      });
+    });
   </script>
 </body>
 </html>

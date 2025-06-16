@@ -7,8 +7,8 @@
   <style>
     :root {
       --color-primary: #EC5800;
-      --color-bg: #fdfdff;
-      --color-text: #1d1d1f;
+      --color-text: #363636;
+      --color-bg: #1d1d1f;
       --color-muted: #8e8e93;
       --radius: 16px;
     }
@@ -22,8 +22,9 @@
       transition: background 0.5s, color 0.5s;
     }
     .hero {
-      text-align: center;
-      padding: 100px 20px;
+      height: 100vh;
+      text-align: center; 
+      padding: 20% 20px;
       background: linear-gradient(135deg, #EC5800, #ff9d64);
       color: white;
     }
@@ -36,6 +37,13 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
+      transition: 0.5s;
+    }
+    .hero button:hover{
+      background: #1d1d1f;
+      color: #f8f8f8;
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #d8d7d7bd;
     }
     section {
       padding: 60px 20px;
@@ -55,13 +63,17 @@
     }
     .slide-card {
       background: white;
-      border-radius: 16px;
+      border-radius: 18px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.07);
       padding: 20px;
       text-align: center;
       transition: transform 0.3s;
+      box-shadow: 0 0 0px #ec5600f1;
     }
-    .slide-card:hover { transform: translateY(-5px); }
+    .slide-card:hover { transform: scale(1.03);
+      box-shadow: 0 0 30px #ec5600f1;
+      
+    }
     .slide-card img {
       width: 100%;
       height: auto;
@@ -79,20 +91,33 @@
     }
     .cards {
       display: flex;
-      gap: 20px;
+      gap: 30px;
       justify-content: center;
       flex-wrap: wrap;
     }
     .card {
-      padding: 20px;
+      padding: 30px;
       background: #f0f0f0;
-      border-radius: 12px;
+      border-radius: 17px;
       flex: 1 1 280px;
       text-align: center;
+      width: 280px;
+      box-shadow: 0 0 0px #ec5600be;
+      transition: transform 1s, box-shadow 0.5s;
+    }
+    .card:hover{
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.751);
     }
     .card.featured {
-      background: #EC5800;
-      color: white;
+      transform: scale(1.03);
+      background: white;
+      box-shadow: 0 0 10px #ec5600f1;
+      transition: transform 1s;
+    }
+    .card.featured:hover{
+      box-shadow: 0 0 30px #ec5600f1;
+      transform: scale(1.06);
     }
     .card .tag {
       background: #ffeb3b;
@@ -110,14 +135,8 @@
       font-size: 15px;
     }
     .card ul li { margin: 6px 0; }
-    details {
-      background: #f8f8f8;
-      margin-bottom: 10px;
-      padding: 15px;
-      border-radius: 8px;
-    }
     .card:hover {
-      transform: translateY(-5px);
+      box-shadow: 0 0 20px #ec5600be;
       transform: scale(1.05);
       transition: transform 0.5s;
     }
@@ -125,7 +144,19 @@
       font-weight: 800;
       font-size: larger;
     }
-    form {
+    details {
+      box-shadow: 0 0 0px #ec5600f1;
+      background: #f8f8f8;
+      margin-bottom: 10px;
+      padding: 15px;
+      border-radius: 8px;
+      transition: 1.5s;
+    }
+    details:hover{
+      box-shadow: 0 0 10px #ec5600f1;
+    }
+
+    /* form {
       display: flex;
       flex-direction: column;
       gap: 12px;
@@ -143,14 +174,17 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
-    }
+    } */
     footer {
       text-align: center;
       padding: 30px;
-      font-size: 14px;
+      font-size: 15px;
       color: #888;
+      /* box-shadow: 0 0 30px #ec5600f1;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px; */
     }
-    .dark-mode {
+    /* .dark-mode {
       background: #121212;
       color: #3e3e3e;
     }
@@ -161,7 +195,7 @@
     .dark-mode .card.featured {
       background: #EC5800;
       color: #1f1f1f;
-    }
+    } */
   </style>
 </head>
 <body>
@@ -213,18 +247,24 @@
           <li>✅ Կինեմատոգրաֆիկ կադրերի կառուցվածք</li>
           <li>❌ Առանց երկխոսության և ուղիղ խոսքի</li>
           <li>❌ Առանց sound design-ի</li>
-          <li><span class="p200">💸 200,000 դրամ</span></li>
+          
         </ul>
+        <br>
+        <span class="p200">💸 200,000 դրամ</span>
       </div>
       <div class="card featured">
-        <h1>Pro <span class="tag">🔥 Առաջարկում ենք</span></h1>
+        <h2>Pro <span class="tag">🔥 HOT</span></h2>
         <ul>
           <li>✅ Standart փաթեթը</li>
           <li>✅ Երկխոսություն կերպարների միջև</li>
           <li>✅ Շրթունքների սինքրոնացում (lipsync)</li>
-          <li>❌ Առանց sound design-ի</li>
-          <li><span class="p280">💸 280,000 դրամ</span></li>
+          <li>❌ Առանց sound design-ի</li> 
+          
         </ul>
+        <br>
+        <br>
+        <br>
+        <span class="p280">💸 280,000 դրամ</span>
       </div>
       <div class="card">
         <h2>Plus</h2>
@@ -233,20 +273,25 @@
           <li>✅ Pro փաթեթըր</li>
           <li>✅ Պրոֆեսիոնալ սաունդ-դիզայն</li>
           <li>✅ 2D/3D ծրագրային վերամշակում</li>
-          <li><span class="p320">💸 320,000 դրամ</span></li>
+          
         </ul>
+        <br>
+        <br>
+        <br>
+        <br>
+        <span class="p320">💸 320,000 դրամ</span>
       </div>
     </div>
   </section>
 
   <section id="faq" class="reveal">
     <h2>Հաճախակի Հարցեր</h2>
-    <details><summary>Ի՞նչ ենք առաջարկում</summary><p>🔹 կերպարների ստեղծում <hr/> 🔹 Տեսարանների կառուցում՝ ձեր տրամադրած օրինակներին (reference) ու միջավայրին համապատասխան <hr/> 🔹 տարբեր ոճերի ինտեգրացիա
+    <details><summary>Ի՞նչ ենք առաջարկում</summary><p>🟠 կերպարների ստեղծում <hr/> 🟠 Տեսարանների կառուցում՝ ձեր տրամադրած օրինակներին (reference) ու միջավայրին համապատասխան <hr/> 🟠 տարբեր ոճերի ինտեգրացիա
       </p></details>
     <details><summary>Աշխատանքային ժամկետը</summary><p>2-5 օր կախված փաթեթից։</p></details>
   </section>
 
-  <section id="contact" class="reveal">
+  <!-- <section id="contact" class="reveal">
     <h2>Կապ մեզ հետ</h2>
     <form onsubmit="handleSubmit(event)">
       <input type="text" placeholder="Ձեր անունը" required />
@@ -255,11 +300,10 @@
       <button type="submit">Ուղարկել</button>
     </form>
     <p id="form-msg"></p>
-  </section>
+  </section> -->
 
   <footer>
-    <p>© 2025 Քո Կազմակերպությունը</p>
-    <button id="modeToggle">🌙 Փոխել ռեժիմ</button>
+    <p>📧 Կապ՝ ai.videos@example.com | ☎️ +374 00 00 00</p>
   </footer>
 
   <script>

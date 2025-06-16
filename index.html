@@ -184,6 +184,17 @@
       border-top-left-radius: 20px;
       border-top-right-radius: 20px; */
     }
+    /* 🎯 Պոպկոռնի նկար */
+    .floating-popcorn {
+      position: fixed;
+      width: 60px;
+      height: auto;
+      pointer-events: none;
+      opacity: 0;
+      transform: scale(0.5) rotate(0deg);
+      transition: opacity 0.5s ease, transform 1s ease;
+      z-index: -1;
+    }
     /* .dark-mode {
       background: #121212;
       color: #3e3e3e;
@@ -199,6 +210,7 @@
   </style>
 </head>
 <body>
+  
   <header class="hero">
     <h1>Բարի գալուստ</h1>
     <p>Տես՝ ինչ ենք ստեղծել</p>
@@ -344,6 +356,39 @@
   </footer>
 
   <script>
+   function createPopcornImage() {
+      const img = document.createElement('img');
+      img.src = 'popcorn.png'; // Փոխիր քո նկարի հասցեով
+      img.className = 'floating-popcorn';
+
+      const x = Math.random() * window.innerWidth;
+      const y = Math.random() * window.innerHeight;
+      img.style.left = `${x}px`;
+      img.style.top = `${y}px`;
+
+      document.body.appendChild(img);
+
+      setTimeout(() => {
+        img.style.opacity = 1;
+        img.style.transform = `scale(1) rotate(${Math.random() * 360}deg)`;
+      }, 50);
+
+      setTimeout(() => {
+        img.style.opacity = 0;
+        setTimeout(() => img.remove(), 1000);
+      }, 2000);
+    }
+
+    let lastPopTime = 0;
+
+window.addEventListener('scroll', () => {
+  const now = Date.now();
+  if (now - lastPopTime > 50) { // ամեն 500ms մեկ թույլատրում ենք
+    createPopcornImage();
+    lastPopTime = now;
+  }
+});
+
     function scrollToSection(id) {
       document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
     }

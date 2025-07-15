@@ -2,420 +2,342 @@
 <html lang="hy">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Popcorn Animations</title>
   <style>
-    :root {
-      --color-primary: #EC5800;
-      --color-text: #363636;
-      --color-bg: #1d1d1f;
-      --color-muted: #8e8e93;
-      --radius: 16px;
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: var(--color-bg);
-      color: var(--color-text);
-      line-height: 1.6;
-      scroll-behavior: smooth;
-      transition: background 0.5s, color 0.5s;
-    }
-    .hero {
-      height: 100vh;
-      text-align: center; 
-      padding: 20% 20px;
-      background: linear-gradient(135deg, #EC5800, #ff9d64);
-      color: white;
-    }
-    .hero button {
-      margin-top: 20px;
-      padding: 12px 24px;
-      font-size: 16px;
-      background: white;
-      color: #EC5800;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.5s;
-    }
-    .hero button:hover{
+    body, html {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #1d1d1f;
-      color: #f8f8f8;
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #d8d7d7bd;
-    }
-    section {
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    h2 {
-      font-size: 32px;
-      text-align: center;
-      margin-bottom: 40px;
-      color: var(--color-primary);
-    }
-    .carousel {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-    }
-    .slide-card {
-      background: white;
-      border-radius: 18px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
-      padding: 20px;
-      text-align: center;
-      transition: transform 0.3s;
-      box-shadow: 0 0 0px #ec5600f1;
-    }
-    .slide-card:hover { transform: scale(1.03);
-      box-shadow: 0 0 30px #ec5600f1;
-      
-    }
-    .slide-card img {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      margin-bottom: 15px;
-    }
-    .slide-card h4 {
-      font-size: 18px;
-      margin-bottom: 8px;
-      color: var(--color-primary);
-    }
-    .slide-card p {
-      font-size: 14px;
-      color: #555;
-    }
-    .cards {
-      display: flex;
-      gap: 30px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .card {
-      padding: 30px;
-      background: #f0f0f0;
-      border-radius: 17px;
-      flex: 1 1 280px;
-      text-align: center;
-      width: 280px;
-      box-shadow: 0 0 0px #ec5600be;
-      transition: transform 1s, box-shadow 0.5s;
-    }
-    .card:hover{
-      transform: scale(1.05);
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.751);
-    }
-    .card.featured {
-      transform: scale(1.03);
-      background: white;
-      box-shadow: 0 0 10px #ec5600f1;
-      transition: transform 1s;
-    }
-    .card.featured:hover{
-      box-shadow: 0 0 30px #ec5600f1;
-      transform: scale(1.06);
-    }
-    .card .tag {
-      background: #ffeb3b;
-      color: #000;
-      font-size: 18px;
-      padding: 2px 6px;
-      border-radius: 6px;
-      margin-left: 6px;
-    }
-    .card ul {
-      text-align: left;
-      margin-top: 12px;
-      list-style: none;
-      padding: 0;
-      font-size: 15px;
-    }
-    .card ul li { margin: 6px 0; }
-    .card:hover {
-      box-shadow: 0 0 20px #ec5600be;
-      transform: scale(1.05);
-      transition: transform 0.5s;
-    }
-    .p200, .p280, .p320{
-      font-weight: 800;
-      font-size: larger;
-    }
-    details {
-      box-shadow: 0 0 0px #ec5600f1;
-      background: #f8f8f8;
-      margin-bottom: 10px;
-      padding: 15px;
-      border-radius: 8px;
-      transition: 1.5s;
-    }
-    details:hover{
-      box-shadow: 0 0 10px #ec5600f1;
+      color: #eee;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
     }
 
-    /* form {
+    
+    #intro {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, #EC5800, #ff9d64);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+      z-index: 9999;
+    }
+    #intro .letter {
+      font-weight: 900;
+      font-size: 4rem;
+      color: white;
+      display: inline-block;
+      cursor: default;
+      animation-name: bounce;
+      animation-duration: 0.6s;
+      animation-fill-mode: forwards;
+      animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+      transform-origin: bottom center;
+      margin: 0 2px;
+    }
+    @keyframes bounce {
+      0%   { transform: translateY(0); }
+      30%  { transform: translateY(-40px); }
+      50%  { transform: translateY(0); }
+      70%  { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
+
+   
+    #content {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 1s ease;
+    }
+    #content.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+
+    header {
+      background: linear-gradient(135deg, #EC5800, #ff9d64);
+      padding: 60px 20px;
+      text-align: center;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    }
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 0.2em;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+    header p {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #fff4e6;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    header button {
+      margin-top: 30px;
+      background: #fff;
+      color: #EC5800;
+      border: none;
+      padding: 14px 32px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 3px 8px rgba(236,88,0,0.5);
+      transition: background 0.3s, color 0.3s;
+    }
+    header button:hover {
+      background: #ff9d64;
+      color: #fff;
+    }
+
+    main {
+      flex-grow: 1;
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    #about {
+      background: rgba(236, 88, 0, 0.15);
+      border-radius: 20px;
+      padding: 40px 30px;
+      box-shadow: 0 0 20px rgba(236,88,0,0.3);
+      margin-bottom: 60px;
+      color: #fff;
+      line-height: 1.5;
+    }
+    #about h2 {
+      font-size: 2.4rem;
+      margin-bottom: 20px;
+      color: #ffcb9a;
+      text-align: center;
+    }
+    #about p {
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+    }
+
+    #projects {
+      margin-bottom: 60px;
+    }
+    #projects h2 {
+      text-align: center;
+      color: #EC5800;
+      font-size: 2.8rem;
+      margin-bottom: 40px;
+      font-weight: 900;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 30px;
+    }
+    .card {
+      background: #2a2a2d;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(236,88,0,0.4);
+      padding: 20px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
-    }
-    form input, form textarea {
-      padding: 10px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-    form button {
-      padding: 10px;
-      background: #EC5800;
-      color: white;
-      border: none;
-      border-radius: 8px;
+      align-items: center;
+      color: #fff;
+      transition: transform 0.3s, box-shadow 0.3s;
       cursor: pointer;
-    } */
-    footer {
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 30px rgba(236,88,0,0.7);
+    }
+    .card iframe {
+      border-radius: 14px;
+      width: 100%;
+      height: 280px;
+      margin-bottom: 15px;
+      border: none;
+    }
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.4rem;
+      color: #ffb366;
+    }
+    .card p {
+      font-size: 1rem;
+      color: #d6d6d6;
       text-align: center;
-      padding: 30px;
-      font-size: 15px;
-      color: #888;
-      /* box-shadow: 0 0 30px #ec5600f1;
-      border-top-left-radius: 20px;
-      border-top-right-radius: 20px; */
     }
-    /* 🎯 Պոպկոռնի նկար */
-    .floating-popcorn {
-      position: fixed;
-      width: 60px;
-      height: auto;
-      pointer-events: none;
-      opacity: 0;
-      transform: scale(0.5) rotate(0deg);
-      transition: opacity 0.5s ease, transform 1s ease;
-      z-index: -1;
+
+    #faq {
+      max-width: 700px;
+      margin: 0 auto 80px;
+      color: #eee;
     }
-    /* .dark-mode {
+    #faq h2 {
+      text-align: center;
+      font-size: 2.6rem;
+      margin-bottom: 30px;
+      color: #EC5800;
+      font-weight: 900;
+    }
+    details {
+      background: #2a2a2d;
+      margin-bottom: 15px;
+      border-radius: 12px;
+      padding: 15px 20px;
+      box-shadow: 0 0 10px rgba(236,88,0,0.5);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    details[open] {
+      background: #3a3a3d;
+    }
+    summary {
+      font-weight: 700;
+      font-size: 1.2rem;
+      outline: none;
+    }
+    details p {
+      margin-top: 10px;
+      color: #ddd;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    footer {
       background: #121212;
-      color: #3e3e3e;
+      padding: 20px;
+      text-align: center;
+      color: #666;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      box-shadow: 0 -3px 10px rgba(236,88,0,0.2);
     }
-    .dark-mode .card {
-      background: #2a2a2a;
-      color: #c6c6c6;
+
+    @media(max-width: 600px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+      .card iframe {
+        height: 220px;
+      }
+      #intro .letter {
+        font-size: 3rem;
+      }
     }
-    .dark-mode .card.featured {
-      background: #EC5800;
-      color: #1f1f1f;
-    } */
   </style>
 </head>
 <body>
-  
-  <header class="hero">
-    <h1>Բարի գալուստ</h1>
-    <p>Տես՝ ինչ ենք ստեղծել</p>
-    <button onclick="scrollToSection('projects')">Դիտել գործերը ↓</button>
-  </header>
+
+  <div id="intro" aria-label="Loading animation"></div>
+
+  <div id="content" aria-hidden="true">
+    <header>
+      <h1>Popcorn Animations</h1>
+      <p>Արհեստական բանականություն և անիմացիա՝ մեկ տեղում</p>
+      <button onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">Դիտել գործերը ↓</button>
+    </header>
+
+    <main>
+      <section id="about">
+        <h2>Մեր Մասին</h2>
+        <p>
+          Մենք ստեղծում ենք տեսանյութեր, որոնք համադրում են արհեստական բանականության ուժը և անիմացիայի գեղարվեստական աշխարհը։
+          Մեր աշխատանքները ոչ միայն տեսողական արտադրանքներ են, այլ իրական պատմություններ, որոնք հաղորդում են զգացմունքներ, գաղափարներ ու արժեքներ։
+          Մեր թիմը բաղկացած է փորձառու մոուշն դիզայներներից և կրեատիվ մասնագետներից, որոնք ունեն ավելի քան 10 տարվա փորձ այս ոլորտում։
+        </p>
+      </section>
+
+      <section id="projects">
+        <h2>Մեր Գործերը</h2>
+        <div class="cards">
+          <div class="card">
+            <iframe src="https://player.vimeo.com/video/1093764854?autoplay=1&loop=1&muted=1&background=1" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            <h3>Բրենդինգ Պոստեր</h3>
+            <p>Պրոֆեսիոնալ դիզայն ընկերությունների համար</p>
+          </div>
+
+          <div class="card">
+            <iframe src="https://player.vimeo.com/video/1093748810?autoplay=1&loop=1&muted=1&background=1" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            <h3>Սոցիալական Վիդեոներ</h3>
+            <p>Կարճ հոլովակներ ու անիմացիաներ</p>
+          </div>
+
+          <div class="card">
+            <iframe src="https://player.vimeo.com/video/1093748662?autoplay=1&loop=1&muted=1&background=1" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            <h3>Մուլտֆիլմային տեսահոլովակներ</h3>
+            <p>Մուլտֆիլմային, մանկական, գունեղ, բոլորի համար։</p>
+          </div>
+
+          <div class="card">
+            <iframe src="https://player.vimeo.com/video/1093748728?autoplay=1&loop=1&muted=1&background=1" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            <h3>Իրական մարդիկ ԱԲ-ի կողմից</h3>
+            <p>Իրական, բնական, չտարբերվող տեսանյութեր</p>
+          </div>
+
+          <div class="card">
+            <iframe src="https://player.vimeo.com/video/1093748764?autoplay=1&loop=1&muted=1&background=1" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            <h3>Բնական ձայն, բնական դեմք</h3>
+            <p>Հայտնիները ասմունքում են, երգում, պարում</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq">
+        <h2>Հաճախակի Հարցեր</h2>
+        <details>
+          <summary>Ի՞նչ ենք առաջարկում</summary>
+          <p>🟠 կերպարների ստեղծում <br/> 🟠 Տեսարանների կառուցում՝ ձեր տրամադրած օրինակներին (reference) ու միջավայրին համապատասխան <br/> 🟠 տարբեր ոճերի ինտեգրացիա</p>
+        </details>
+        <details>
+          <summary>Աշխատանքային ժամկետը</summary>
+          <p>2-5 օր կախված փաթեթից։</p>
+        </details>
+      </section>
+    </main>
+
+    <footer>
+      📧 Կապ՝ ai.videos@example.com | ☎️ +374 00 00 00
+    </footer>
+  </div>
+
+<script>
+  const introText = "Popcorn Animations";
+  const intro = document.getElementById('intro');
+
  
-  <section id="projects" class="reveal">
-    <h2>Մեր Գործերը</h2>
-    <div class="carousel">
-      <div class="slide-card">
-        <div style="position:relative; width:100%; height:0px; padding-bottom:177.778%"><iframe 
-          src=" https://player.vimeo.com/video/1093764854?autoplay=1&loop=1&muted=1&background=1" 
-          frameborder="0" 
-          allow="autoplay; fullscreen; picture-in-picture" 
-          style="position:absolute;top:0;left:0;width:100%;height:100%;" 
-          title="1-hunisi 1" 
-          allowfullscreen>
-        </iframe>
-        </div>
-        <h4>Բրենդինգ Պոստեր</h4>
-        <p>Պրոֆեսիոնալ դիզայն ընկերությունների համար</p>
-      </div>
-      <div class="slide-card">
-        <div style="position:relative; width:100%; height:0px; padding-bottom:177.778%"><iframe 
-          src="https://player.vimeo.com/video/1093748810?autoplay=1&loop=1&muted=1&background=1" 
-          frameborder="0" 
-          allow="autoplay; fullscreen; picture-in-picture" 
-          style="position:absolute;top:0;left:0;width:100%;height:100%;" 
-          title="1-hunisi 1" 
-          allowfullscreen>
-        </iframe>
-        </div>
-        <h4>Սոցիալական Վիդեոներ</h4>
-        <p>Կարճ հոլովակներ ու անիմացիաներ</p>
-      </div>
-      <div class="slide-card">
-        <div style="position:relative; width:100%; height:0px; padding-bottom:177.778%"><iframe 
-          src="https://player.vimeo.com/video/1093748662?autoplay=1&loop=1&muted=1&background=1" 
-          frameborder="0" 
-          allow="autoplay; fullscreen; picture-in-picture" 
-          style="position:absolute;top:0;left:0;width:100%;height:100%;" 
-          title="1-hunisi 1" 
-          allowfullscreen>
-        </iframe></div>
-        <h4>Մուլտֆիլմային տեսահոլովակներ</h4>
-        <p>Մուլտֆիլմային, մանկական, գունեղ, բոլորի համար։</p>
-      </div>
-      <div class="slide-card">
-        <div style="position:relative; width:100%; height:0px; padding-bottom:177.778%"><iframe 
-          src="https://player.vimeo.com/video/1093748728?autoplay=1&loop=1&muted=1&background=1" 
-          frameborder="0" 
-          allow="autoplay; fullscreen; picture-in-picture" 
-          style="position:absolute;top:0;left:0;width:100%;height:100%;" 
-          title="1-hunisi 1" 
-          allowfullscreen>
-        </iframe></div>
-        <h4>Իրական մարդիկ ԱԲ-ի կողմից</h4>
-        <p>Իրական, բնական, չտարբերվող տեսանյութեր</p>
-      </div>
-      <div class="slide-card">
-        <div style="position:relative; width:100%; height:0px; padding-bottom:177.778%"><iframe 
-          src="https://player.vimeo.com/video/1093748764?autoplay=1&loop=1&muted=1&background=1" 
-          frameborder="0" 
-          allow="autoplay; fullscreen; picture-in-picture" 
-          style="position:absolute;top:0;left:0;width:100%;height:100%;" 
-          title="1-hunisi 1" 
-          allowfullscreen>
-        </iframe>
-        </div>
-        <h4>Բնական ձայն, բնական դեմք</h4>
-        <p>Հայտնիները ասմունքում են, երգում, պարում</p>
-    </div>
-  </section>
-
-  <section id="pricing" class="reveal">
-    <h2>Փաթեթներ</h2>
-    <div class="cards">
-      <div class="card">
-        <h2>Standard</h2>
-        <ul>
-          <li>✅ Հեղինակային AI ոճով վիզուալ</li>
-          <li>✅ Յուրահատուկ կերպարներ</li>
-          <li>✅ Կինեմատոգրաֆիկ կադրերի կառուցվածք</li>
-          <li>❌ Առանց երկխոսության և ուղիղ խոսքի</li>
-          <li>❌ Առանց sound design-ի</li>
-          
-        </ul>
-        <br>
-        <span class="p200">💸 200,000 դրամ</span>
-      </div>
-      <div class="card featured">
-        <h2>Pro <span class="tag">🔥 HOT</span></h2>
-        <ul>
-          <li>✅ Standart փաթեթը</li>
-          <li>✅ Երկխոսություն կերպարների միջև</li>
-          <li>✅ Շրթունքների սինքրոնացում (lipsync)</li>
-          <li>❌ Առանց sound design-ի</li> 
-          
-        </ul>
-        <br>
-        <br>
-        <br>
-        <span class="p280">💸 280,000 դրամ</span>
-      </div>
-      <div class="card">
-        <h2>Plus</h2>
-        <ul>
-          <li>✅ Standart փաթեթը</li>
-          <li>✅ Pro փաթեթըր</li>
-          <li>✅ Պրոֆեսիոնալ սաունդ-դիզայն</li>
-          <li>✅ 2D/3D ծրագրային վերամշակում</li>
-          
-        </ul>
-        <br>
-        <br>
-        <br>
-        <br>
-        <span class="p320">💸 320,000 դրամ</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="faq" class="reveal">
-    <h2>Հաճախակի Հարցեր</h2>
-    <details><summary>Ի՞նչ ենք առաջարկում</summary><p>🟠 կերպարների ստեղծում <hr/> 🟠 Տեսարանների կառուցում՝ ձեր տրամադրած օրինակներին (reference) ու միջավայրին համապատասխան <hr/> 🟠 տարբեր ոճերի ինտեգրացիա
-      </p></details>
-    <details><summary>Աշխատանքային ժամկետը</summary><p>2-5 օր կախված փաթեթից։</p></details>
-  </section>
-
-  <!-- <section id="contact" class="reveal">
-    <h2>Կապ մեզ հետ</h2>
-    <form onsubmit="handleSubmit(event)">
-      <input type="text" placeholder="Ձեր անունը" required />
-      <input type="email" placeholder="Էլ․ փոստ" required />
-      <textarea placeholder="Հաղորդագրություն" required></textarea>
-      <button type="submit">Ուղարկել</button>
-    </form>
-    <p id="form-msg"></p>
-  </section> -->
-
-  <footer>
-    <p>📧 Կապ՝ ai.videos@example.com | ☎️ +374 00 00 00</p>
-  </footer>
-
-  <script>
-   function createPopcornImage() {
-      const img = document.createElement('img');
-      img.src = 'popcorn.png'; // Փոխիր քո նկարի հասցեով
-      img.className = 'floating-popcorn';
-
-      const x = Math.random() * window.innerWidth;
-      const y = Math.random() * window.innerHeight;
-      img.style.left = `${x}px`;
-      img.style.top = `${y}px`;
-
-      document.body.appendChild(img);
-
-      setTimeout(() => {
-        img.style.opacity = 1;
-        img.style.transform = `scale(1) rotate(${Math.random() * 360}deg)`;
-      }, 50);
-
-      setTimeout(() => {
-        img.style.opacity = 0;
-        setTimeout(() => img.remove(), 1000);
-      }, 2000);
-    }
-
-    let lastPopTime = 0;
-
-window.addEventListener('scroll', () => {
-  const now = Date.now();
-  if (now - lastPopTime > 50) { // ամեն 500ms մեկ թույլատրում ենք
-    createPopcornImage();
-    lastPopTime = now;
+  for(let i = 0; i < introText.length; i++) {
+    const span = document.createElement('span');
+    span.className = 'letter';
+    span.textContent = introText[i] === ' ' ? '\u00A0' : introText[i];
+   
+    span.style.animationDelay = (i * 0.15) + 's';
+    intro.appendChild(span);
   }
-});
 
-    function scrollToSection(id) {
-      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-    }
-    function handleSubmit(event) {
-      event.preventDefault();
-      document.getElementById('form-msg').textContent = 'Շնորհակալություն, մենք կկապվենք ձեզ հետ։';
-    }
-    window.addEventListener('scroll', () => {
-      document.querySelectorAll('.reveal').forEach(el => {
-        const top = el.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        if (top < windowHeight - 100) {
-          el.style.opacity = 1;
-          el.style.transform = 'translateY(0)';
-        }
-      });
-    });
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.reveal').forEach(el => {
-        el.style.opacity = 0;
-        el.style.transform = 'translateY(40px)';
-        el.style.transition = 'all 0.6s ease';
-      });
-      document.getElementById('modeToggle').addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-      });
-    });
-  </script>
+ 
+  setTimeout(() => {
+    intro.style.transition = 'opacity 1s ease';
+    intro.style.opacity = 0;
+
+    const content = document.getElementById('content');
+    content.classList.add('visible');
+
+    setTimeout(() => {
+      intro.style.display = 'none';
+    }, 1000);
+  }, 3000);
+</script>
+
 </body>
 </html>
